@@ -1,7 +1,8 @@
-use tokio::runtime::Runtime;
+use tokio;
 use bollard::Docker;
 
-async fn run() -> Result<(), Box<dyn std::error::Error>> {
+#[tokio::main]
+pub async fn main() {
     #[cfg(unix)]
     let docker = Docker::connect_with_unix_defaults().unwrap();
 
@@ -9,10 +10,4 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
         let version = docker.version().await.unwrap();
         println!("{:?}", version);
     }.await;
-    Ok(())
-}
-
-fn main() {
-    let mut rt = Runtime::new().unwrap();
-    rt.block_on(run()).unwrap();
 }
