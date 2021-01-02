@@ -1,5 +1,6 @@
 use tokio;
 use bollard::Docker;
+use virt::connect::Connect;
 
 #[tokio::main]
 pub async fn main() {
@@ -10,4 +11,10 @@ pub async fn main() {
         let version = docker.version().await.unwrap();
         println!("{:?}", version);
     }.await;
+
+    if let Ok(mut conn) = Connect::open("qemu:///system") {
+        let domains = conn.list_domains().unwrap_or(vec![]);
+        println!("{:?}", domains);
+        conn.close().unwrap();
+    }
 }
