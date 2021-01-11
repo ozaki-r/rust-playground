@@ -9,4 +9,3 @@ edition = "2018"
 [dependencies]
 tokio = { version = "0.2", features = ["full"] }
 bollard = "0.9"
-virt = "0.2.11"
