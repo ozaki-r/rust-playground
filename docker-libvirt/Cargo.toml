@@ -1,0 +1,12 @@
+[package]
+name = "docker"
+version = "0.1.0"
+authors = ["Ryota Ozaki <ozaki.ryota@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "0.2", features = ["full"] }
+bollard = "0.9"
+virt = "0.2.11"
